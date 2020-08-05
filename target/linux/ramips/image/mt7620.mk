@@ -401,6 +401,25 @@ define Device/na930
 endef
 TARGET_DEVICES += na930
 
+define Device/netgear_jwnr2010-v5
+  DTS := JWNR2010v5
+  BLOCKSIZE := 4k
+  IMAGE_SIZE := 3840k
+  DEVICE_TITLE := Netgear JWNR2010v5
+  SERCOMM_HWNAME := N300
+  SERCOMM_HWID := ASW
+  SERCOMM_HWVER := A001
+  SERCOMM_SWVER := 0x0040
+  IMAGES += factory.img
+  IMAGE/default := append-kernel | pad-to $$$$(BLOCKSIZE) | append-rootfs | \
+	pad-rootfs
+  IMAGE/sysupgrade.bin := $$(IMAGE/default) | append-metadata | check-size $$$$(IMAGE_SIZE)
+  IMAGE/factory.img := pad-extra 128k | $$(IMAGE/default) | pad-to $$$$(BLOCKSIZE) | \
+	sercom-footer | pad-to 128 | check-size $$$$(IMAGE_SIZE) | zip $$$$(SERCOMM_HWNAME).bin | \
+	sercom-seal
+endef
+TARGET_DEVICES += netgear_jwnr2010-v5
+
 define Device/oy-0001
   DTS := OY-0001
   IMAGE_SIZE := $(ralink_default_fw_size_16M)

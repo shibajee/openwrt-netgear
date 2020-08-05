@@ -112,6 +112,7 @@ platform_check_image() {
 	mzk-wdpr|\
 	nbg-419n|\
 	nbg-419n2|\
+	netgear,jwnr2010-v5|\
 	newifi-d1|\
 	d-team,newifi-d2|\
 	nixcore-x1-8M|\

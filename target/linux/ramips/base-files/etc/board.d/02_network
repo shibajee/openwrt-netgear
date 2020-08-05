@@ -33,6 +33,7 @@ ramips_setup_interfaces()
 	case $board in
 	11acnas|\
 	dir-615-h1|\
+	netgear,jwnr2010-v5|\
 	w2914nsv2|\
 	zbt-we2026)
 		ucidef_add_switch "switch0" \
@@ -534,6 +535,7 @@ ramips_setup_macs()
 	tew-691gr)
 		wan_mac=$(macaddr_add "$(mtd_get_mac_binary factory 4)" 3)
 		;;
+	netgear,jwnr2010-v5|\
 	tew-692gr)
 		wan_mac=$(macaddr_add "$(mtd_get_mac_binary factory 4)" 1)
 		;;

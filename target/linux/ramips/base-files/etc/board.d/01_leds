@@ -301,6 +301,14 @@ mzk-ex750np)
 na930)
 	set_usb_led "$boardname:blue:status"
 	;;
+netgear,jwnr2010-v5)
+	ucidef_set_led_default "power" "power" "$boardname:green:power" "1"
+	ucidef_set_led_switch "lan1" "lan1" "$boardname:green:lan1" "switch0" "0x08"
+	ucidef_set_led_switch "lan2" "lan2" "$boardname:green:lan2" "switch0" "0x04"
+	ucidef_set_led_switch "lan3" "lan3" "$boardname:green:lan3" "switch0" "0x02"
+	ucidef_set_led_switch "lan4" "lan4" "$boardname:green:lan4" "switch0" "0x01"
+	ucidef_set_led_switch "wan" "wan" "$boardname:green:wan" "switch0" "0x10"
+	;;
 newifi-d1)
 	set_usb_led "$boardname:red:status"
 	;;

@@ -38,6 +38,7 @@ get_status_led() {
 	mzk-w300nh2|\
 	nbg-419n|\
 	nbg-419n2|\
+	netgear,jwnr2010-v5|\
 	pwh2004|\
 	r6220|\
 	tplink,c20-v4|\
