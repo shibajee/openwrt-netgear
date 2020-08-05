@@ -24,6 +24,7 @@ endef
 
 DEVICE_VARS += DTS IMAGE_SIZE NETGEAR_BOARD_ID NETGEAR_HW_ID
 DEVICE_VARS += BUFFALO_TAG_PLATFORM BUFFALO_TAG_VERSION BUFFALO_TAG_MINOR
+DEVICE_VARS += SERCOMM_HWNAME SERCOMM_HWID SERCOMM_HWVER SERCOMM_SWVER
 
 loadaddr-y := 0x80000000
 loadaddr-$(CONFIG_TARGET_ramips_rt288x) := 0x88000000
@@ -145,6 +146,19 @@ define Build/mkdlinkfw-factory
 		-o $@.new \
 		-s $(DLINK_FIRMWARE_SIZE)
 	mv $@.new $@
+endef
+
+define Build/sercom-footer
+	$(call Build/sercom-seal,-f)
+endef
+
+define Build/sercom-seal
+	$(STAGING_DIR_HOST)/bin/mksercommfw \
+		-i $@ \
+		-b $(SERCOMM_HWID) \
+		-r $(SERCOMM_HWVER) \
+		-v $(SERCOMM_SWVER) \
+		$(1)
 endef
 
 #
